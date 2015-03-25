@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="jquery/jquery.mobile-1.4.5.min.css" />
+	<script src="jquery/jquery-1.11.1.min.js"></script>
+	<script src="jquery/jquery.mobile-1.4.5.min.js"></script>
+
+	<link href='http://fonts.googleapis.com/css…'  rel='stylesheet' type='text/css'>
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+	</script>
+	<script type="text/javascript">
+	
+	var markers = [
+		<!--Fast Food-->
+		['Ricos Restaurant Corpuz Street',14.831165,120.2784698],
+		['Ricos Fastfood Restaurant New Banicain',14.8302006,120.2783299,],
+		['Mcdo Rizal Avenue',14.8449058,120.2907097],
+		['McDonalds Olongapo Rizal',14.8449369,120.2907483],
+		['McDonalds',14.8397921,120.2852921],
+		['Mcdo Magsaysay Drive',14.827189,120.282818],
+		['Jollibee magsaysay',14.8940373,120.3203919],
+		['Jollibee Rizal',14.8385069,120.2842705],
+		['Chowking Rizal Highway Subic Bay Freeport zone',14.8244361,120.2799065],
+		['Greenwich Olongapo',14.8390153,120.2842287],
+		['Sams Pizza',14.830075,120.2812875]
+	];
+	function FASTFOODS() {
+		var myOptions = {
+			disableDefaultUI: true,
+			mapTypeId: google.maps.MapTypeId.ROADMAP,
+			mapTypeControl: false
+		};
+		var map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
+		var infowindow = new google.maps.InfoWindow();
+		var marker, i;
+		var bounds = new google.maps.LatLngBounds();
+		
+		for (i = 0; i < markers.length; i++) {
+			var pos = new google.maps.LatLng(markers[i][1], markers[i][2]);
+			bounds.extend(pos);
+			marker = new google.maps.Marker({
+				position: pos,
+				map: map
+			});
+			google.maps.event.addListener(marker, 'click', (function(marker, i){
+				return function() {
+					infowindow.setContent(markers[i][0]);
+					infowindow.open(map, marker);
+				}	
+			})(marker, i));
+		}
+		map.fitBounds(bounds);
+	}
+	
+	var markers1 = [
+		<!--Mall-->
+		['SM City Olongapo',14.8265163,120.2829382],
+		['Harbor Point',14.8248027,120.2801685],
+		['Ocampos Mall', 14.843255,120.288322]
+	];
+	function Malls() {
+		var myOptions = {
+			disableDefaultUI: true,
+			mapTypeId: google.maps.MapTypeId.ROADMAP,
+			mapTypeControl: false
+		};
+		var map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
+		var infowindow = new google.maps.InfoWindow();
+		var marker, i;
+		var bounds = new google.maps.LatLngBounds();
+		
+		for (i = 0; i < markers1.length; i++) {
+			var pos = new google.maps.LatLng(markers1[i][1], markers1[i][2]);
+			bounds.extend(pos);
+			marker = new google.maps.Marker({
+				position: pos,
+				map: map
+			});
+			google.maps.event.addListener(marker, 'click', (function(marker, i){
+				return function() {
+					infowindow.setContent(markers1[i][0]);
+					infowindow.open(map, marker);
+				}	
+			})(marker, i));
+		}
+		map.fitBounds(bounds);
+	}
+		
+		var markers2 = [
+		<!--Hospitals and Medicals-->
+		['James L. Gordon Hospitals',14.8263973,120.2803707],
+		['Boypointe Hospital Medical Center',14.8239872,120.2722548],
+		['Mother and Child Family Hospital',14.8299486,120.2869236],
+		['Sta. Veronica General Hospital',14.8771143,120.2950759],
+		['Baypoint Hospital and Medical Center Clinic',14.8250157,120.2779612],
+		['Afable Medical Center',14.838678,120.284674],
+		['Our Lady of Lourdes International Medical Center',14.8475503,120.26918],
+		['Calapatia Polymedic Hospital Plaza',14.8424439,120.2887649]
+		];
+	function Hospitals() {
+		var myOptions = {
+			disableDefaultUI: true,
+			mapTypeId: google.maps.MapTypeId.ROADMAP,
+			mapTypeControl: false
+		};
+		var map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
+		var infowindow = new google.maps.InfoWindow();
+		var marker, i;
+		var bounds = new google.maps.LatLngBounds();
+		
+		for (i = 0; i < markers2.length; i++) {
+			var pos = new google.maps.LatLng(markers2[i][1], markers2[i][2]);
+			bounds.extend(pos);
+			marker = new google.maps.Marker({
+				position: pos,
+				map: map
+			});
+			google.maps.event.addListener(marker, 'click', (function(marker, i){
+				return function() {
+					infowindow.setContent(markers2[i][0]);
+					infowindow.open(map, marker);
+				}	
+			})(marker, i));
+		}
+		map.fitBounds(bounds);
+	}
+	
+		var markers3 = [
+		<!--Elem-->
+		['Balc-Balic Elementary School',14.8588009,120.2926876],
+		['Gordon Heights Elementary School',14.8574058,120.2900484],
+		['Olongapo City Elementary School',14.8439557,120.2892582],
+		['Tabacuhan Elementary School',14.8549135,120.3003427],
+		['Old Cabalan Elementary School',14.853871,120.301084],
+		['Santa Rita Elementary School',14.8495414,120.2936],
+		['Tapinac Elementary School',14.8327174,120.2832345],
+		['East Bajac-Bajac Elementary School',14.8378193,120.2830511],
+		['James L. Gordon Elementary School',14.8313634,120.2772868],
+		['Banicain Elementary School',14.8285246,120.2757941],
+		['Asinan Elementary School',14.8282525,120.2862264],
+		['Kalalake Elementary School',14.8297999,120.2889191],
+		['Gordon Heights II Elementary School',14.8299415,120.2874318]
+	];
+	function Elem() {
+		var myOptions = {
+			disableDefaultUI: true,
+			mapTypeId: google.maps.MapTypeId.ROADMAP,
+			mapTypeControl: false
+		};
+		var map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
+		var infowindow = new google.maps.InfoWindow();
+		var marker, i;
+		var bounds = new google.maps.LatLngBounds();
+		
+		for (i = 0; i < markers3.length; i++) {
+			var pos = new google.maps.LatLng(markers3[i][1], markers3[i][2]);
+			bounds.extend(pos);
+			marker = new google.maps.Marker({
+				position: pos,
+				map: map
+			});
+			google.maps.event.addListener(marker, 'click', (function(marker, i){
+				return function() {
+					infowindow.setContent(markers3[i][0]);
+					infowindow.open(map, marker);
+				}	
+			})(marker, i));
+		}
+		map.fitBounds(bounds);
+	}
+	
+		var markers4 = [
+		<!--Highschool-->
+		['Kalalake National High School',14.8305636,120.2891095],
+		['Olongapo City National High School',14.8350285,120.2818805],
+		['Santa Rita High School',14.8497583,120.2936827],
+		['Christ The King Catholic School',14.8485682,120.2951794],
+		['New Cabalan National High School',14.8548804,120.3262688],
+		['Iram High School (Resettlement+School)',14.8761086,120.2950201],
+		['Olongapo Wesley School',14.8317499,120.2808856],
+		['Gordon Heights National High School',14.856445,120.290053]
+	];
+	function Highschool() {
+		var myOptions = {
+			disableDefaultUI: true,
+			mapTypeId: google.maps.MapTypeId.ROADMAP,
+			mapTypeControl: false
+		};
+		var map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
+		var infowindow = new google.maps.InfoWindow();
+		var marker, i;
+		var bounds = new google.maps.LatLngBounds();
+		
+		for (i = 0; i < markers4.length; i++) {
+			var pos = new google.maps.LatLng(markers4[i][1], markers4[i][2]);
+			bounds.extend(pos);
+			marker = new google.maps.Marker({
+				position: pos,
+				map: map
+			});
+			google.maps.event.addListener(marker, 'click', (function(marker, i){
+				return function() {
+					infowindow.setContent(markers4[i][0]);
+					infowindow.open(map, marker);
+				}	
+			})(marker, i));
+		}
+		map.fitBounds(bounds);
+	}
+	
+		var markers5 = [
+		<!--College-->
+		['Gordon College',14.8358906,120.2836104],
+		['Columban College',14.8265245,120.281743],
+		['STI College Olongapo City',14.8645019,120.3090708],
+		['AMA Computer Learning Center',14.8389823,120.2842124],
+		['STI College',14.8334921,120.2811395],
+		['Mondriaan Aura College', 14.825642,120.27781],
+		['Metro Subic Colleges, INC.', 14.8322608,120.2846585],
+		['St.Joseph College Olongapo',14.8378525,120.28573],
+		['AMA Computer College-Olongapo City',14.8377598,120.2838363],
+		['AMA Computer College Olongapo AYC Building Rizal Avenue',14.8380091,120.2836304],
+		['AMA Computer Learning Center',14.839023,120.2843406]
+	];
+	function College() {
+		var myOptions = {
+			disableDefaultUI: true,
+			mapTypeId: google.maps.MapTypeId.ROADMAP,
+			mapTypeControl: false
+		};
+		var map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
+		var infowindow = new google.maps.InfoWindow();
+		var marker, i;
+		var bounds = new google.maps.LatLngBounds();
+		
+		for (i = 0; i < markers5.length; i++) {
+			var pos = new google.maps.LatLng(markers5[i][1], markers5[i][2]);
+			bounds.extend(pos);
+			marker = new google.maps.Marker({
+				position: pos,
+				map: map
+			});
+			google.maps.event.addListener(marker, 'click', (function(marker, i){
+				return function() {
+					infowindow.setContent(markers5[i][0]);
+					infowindow.open(map, marker);
+				}	
+			})(marker, i));
+		}
+		map.fitBounds(bounds);
+	}
+	
+	var newwindow;
+function poptastic(url)
+{
+	newwindow=window.open(url,'name','height=400,width=200');
+	if (window.focus) {newwindow.focus()}
+}
+	</script>
+</head>
+
+<body onload="newWindow();">
+
+ 
+
+<!-- ************* PAGE ONE ************* -->
+<div data-role="page" id="page1">
+	<div data-role="panel" id="panel1" data-display="reveal" data-theme="b">
+		<h3>Olongapo City Establishments</h3>
+		<div data-role="collapsibleset" data-theme="b">
+			<hr />
+			<a href="#page1" data-position-to="window"class="ui-btn ui-icon-home ui-btn-icon-left ui-btn-inline ui-btn-corner-all">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspHome&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+			<div data-role="collapsible">
+				<h1>Menu</h1>
+				<p>List</p>
+				<div align="left-side">
+<input type="button" value="FASTFOODS" onclick="FASTFOODS();"></br>
+<input type="button" value="MALLS" onclick="Malls();"></br>
+<input type="button" value="COLLEGES" onclick="College();"></br>
+<input type="button" value="HIGHSCHOOL" onclick="Highschool();"></br>
+<input type="button" value="ELEMENTARY" onclick="Elem();"></br>
+<input type="button" value="CLINIC/HOSPITALS" onclick="Hospitals();"></br>
+
+</div>
+			</div>
+			
+				
+		
+		</div>
+</div>
+
+
+	<div data-role="header" data-theme="b" data-position="fixed">
+	<a href="#panel1" data-transition="none" class="ui-btn ui-btn-icon-notext ui-corner-all ui-icon-grid ui-btn-icon-left">List</a>
+<a href="Fastfood:window.close()" class="ui-btn ui-btn-icon-notext ui-corner-all ui-icon-delete ui-shadow ui-btn-right"></a>
+		<h1>Olongapo Mobile Locator</h1>
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#page1" data-icon="home" data-transition="none">Home</a></li>
+				<li><a href="#page2" data-icon="search" data-transition="none">About Us</a></li>
+			</ul>
+		</div>
+	</div>
+	
+	<div data-role="main" class="ui-content">
+	<h3>Your Favorite Establishment Here:</h3>
+
+<div id="map_canvas" style="width:100%; height:500px"></br>
+</div>
+
+	</div>
+	<div data-role="footer" data-theme="b" data-position="fixed" align="center">
+		<a href="#page2" class="ui-btn ui-btn-icon-notext ui-corner-all ui-icon-carat-r ui-shadow"></a>
+	</div>	
+	</div>	
+<!-- ************* PAGE TWO ************* -->
+<div data-role="page" id="page2">
+	<div data-role="panel" id="panel1" data-display="reveal" data-theme="b">
+		<h2>Olongapo City Establishments</h2>
+		<div data-role="collapsibleset" data-theme="b">
+			<hr />
+			<a href="#page1" data-position-to="window"class="ui-btn ui-icon-home ui-btn-icon-left ui-btn-inline ui-btn-corner-all">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspHome&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+			<div data-role="collapsible">
+				<h1>Menu</h1>
+				<p>List</p>
+				<div align="left-side">
+<input type="button" value="FASTFOODS" onclick="FASTFOODS();"></br>
+<input type="button" value="MALLS" onclick="Malls();"></br>
+<input type="button" value="COLLEGES" onclick="College();"></br>
+<input type="button" value="HIGHSCHOOL" onclick="Highschool();"></br>
+<input type="button" value="ELEMENTARY" onclick="Elem();"></br>
+<input type="button" value="CLINIC/HOSPITALS" onclick="Hospitals();"></br>
+
+</div>
+			</div>
+			
+				
+		
+		</div>
+</div>
+
+
+	<div data-role="header" data-theme="b" data-position="fixed">
+	<a href="#panel1" data-transition="none" class="ui-btn ui-btn-icon-notext ui-corner-all ui-icon-grid ui-btn-icon-left">List</a>
+	<a href="Fastfood:window.close()" class="ui-btn ui-btn-icon-notext ui-corner-all ui-icon-delete ui-shadow ui-btn-right"></a>
+
+		<h1>Olongapo Mobile Locator</h1>
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#page1" data-icon="home" data-transition="none">Home</a></li>
+				<li><a href="#page2" data-icon="search" data-transition="none">About Us</a></li>
+			</ul>
+		</div>
+	</div>
+	
+<p> This our beautiful establishment in Olongapo City</p>                                      
+		<div data-demo-html="true">
+			<a href="#popupChurch" data-rel="popup" data-position-to="window" data-transition="fade"> <img src="image/Church.jpg" alt="Saint joseph Church" style="width:30%"></a>
+			<a href="#popuppuregold" data-rel="popup" data-position-to="window" data-transition="fade"> <img src="image/Puregold.jpg" alt="Store" style="width:30%"></a>
+			<a href="#popuproyal" data-rel="popup" data-position-to="window" data-transition="fade"> <img src="image/Royal.jpg" alt="Store" style="width:30%"></a>
+			<a href="#popupswimmingpool" data-rel="popup" data-position-to="window" data-transition="fade"> <img src="image/Swimming.jpg" alt="swimmingpool" style="width:32%"></a>
+			<a href="#popupwelcome" data-rel="popup" data-position-to="window" data-transition="fade"> <img src="image/Ulo.jpg" alt="Welcome" style="width:35%"></a>
+
+				<p><center><br>Olongapo was a small fishing village on the eastern shores of Subic Bay. It was one of the villages that dotted Subic Bay,
+				having such musical names as Tibawa, Ilalim, Naglubid, Diliwariw, Banicain, Boton, Binictican, Ilingin, Maquinaya. 
+	<br>Legend has it that the peaceful village of Olongapo was ruled by a benevolent man called Apo.</br>
+	The peace of the village was disrupted by a band of goons who sowed fear and terror among the simple folk.</br> 
+	These bandits beheaded the Apo and took off with his head. The villagers were struck with fear and could not be appeased until a young man appeared out of the jungle one day. He carried in his arms the head of the revered old man which he found impaled on a bamboo pole. 
+	The villagers shouted with joy 'Ulo ng Apo!Ulo ng Apo!' Now they could give the remains of their beloved Apo an honorable burial.
+	And in his honor, the village became known as Olongapo!</p></center><center><iframe src="http://www.facebook.com/plugins/like.php?href=https://www.facebook.com/GapoOlongapoPoint?skip_nax_wizard=true&ref_type=logout_gear;
+width=500&amp;layout=standard&amp;action=like&amp;show_faces=false&amp;share=true&amp;height=30"
+     scrolling="no"
+     frameborder="0"
+     allowTransparency="true"></center>
+</iframe> </br></p>
+			
+			<div data-role="popup" id="popupChurch" data-overlay-theme="b" data-theme="b" data-corners="false">
+				<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a><img class="popphoto" src="image/Church.jpg" style="width:300px; height:300px" alt="Saint Joseph Church">
+			</div>
+			<div data-role="popup" id="popuppuregold" data-overlay-theme="b" data-theme="b" data-corners="false">
+				<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a><img class="popphoto" src="image/Puregold.jpg" style="width:300px; height:300px" alt="Department Store">
+			</div>
+			<div data-role="popup" id="popuproyal" data-overlay-theme="b" data-theme="b" data-corners="false">
+				<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a><img class="popphoto" src="image/Royal.jpg" style="width:300px; height:300px" alt="Department Store">
+			</div>
+			<div data-role="popup" id="popupswimmingpool" data-overlay-theme="b" data-theme="b" data-corners="false">
+				<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a><img class="popphoto" src="image/Swimming.jpg" style="width:300px; height:300px" alt="Swimming Pool">
+			</div>
+			<div data-role="popup" id="popupwelcome" data-overlay-theme="b" data-theme="b" data-corners="false">
+				<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a><img class="popphoto" src="image/Ulo.jpg" style="width:300px; height:300px" alt="Welcome Olongapo">
+			</div></div></div>
+	<div data-role="footer" data-theme="b" data-position="fixed" align="center">
+		<a href="#page1" class="ui-btn ui-btn-icon-notext ui-corner-all ui-icon-carat-l ui-shadow"></a>
+	</div>
+</div>
+<script>
+// Popup window code
+
+
+</script>	
+</body>
+
+</html>
